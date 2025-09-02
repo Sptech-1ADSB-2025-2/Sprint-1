@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador financeiro</title>
+</head>
+
+<body>
+    <h1>Simulador financeiro</h1>
+    Insira a média anual de recém-nascidos no hospital: <input type="text" id="qtd_bebes"><br>
+    Insira a média diária de gastos com cada recém-nascido: <input type="text" id="valor_diario"><br>
+    <button onclick="simular()">Iniciar simulação</button>
+    <br><br>
+    <div id="msg"></div>
+</body>
+<script>
+    function simular() {
+        var qtdBebes = Number(qtd_bebes.value)
+        var percentualPrematuros = 12 / 100
+        var taxaHipotermia = 0.8
+        var custoDiario = Number(valor_diario.value)
+        var diasTratamentoHipotermia = 3
+
+        var qtdPrematuros = qtdBebes * percentualPrematuros
+        var qtdPrematurosHipotermicos = qtdPrematuros * taxaHipotermia
+        var custoTratamento = custoDiario * diasTratamentoHipotermia
+        var custoTotal = custoTratamento * qtdPrematurosHipotermicos
+
+        var sufixoPreco = ''
+
+        if (custoTotal >= 1000) {
+            custoTotal /= 1000
+            sufixoPreco = 'mil'
+        }
+        if (custoTotal >= 1000) {
+            custoTotal /= 1000
+            sufixoPreco = 'milhão'
+            if (custoTotal >= 2) {
+                sufixoPreco = 'milhões'
+            }
+        }
+        if (custoTotal >= 1000) {
+            custoTotal /= 1000
+            sufixoPreco = 'bilhão'
+            if (custoTotal >= 2) {
+                sufixoPreco = 'bilhões'
+            }
+        }
+
+        var custoTotalFormatado = custoTotal.toFixed(2) * 1
+        
+        msg.innerHTML = `Você poderá economizar até R$${custoTotalFormatado} ${sufixoPreco} por ano com a Neoguard!`
+        qtd_bebes.value = ''
+        valor_diario.value = ''
+    }
+</script>
+
+</html>
