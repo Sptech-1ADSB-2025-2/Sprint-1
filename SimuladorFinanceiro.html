@@ -47,10 +47,25 @@ function economizar() {
 
     var ax_economia = ax_estimativa * ax_gasto_bb * ax_utins_dias;
 
-    div_calc.innerHTML = `Se reduzissimos 40% dos casos, teriam ${ax_estimativa.toFixed(0)} bebês prematuros no seu hospital, sua economia pode chegar até <span style="color: green;"/> <b>R$${ax_economia.toFixed(0)} mensais </b> .`
+    var sufixo = ''
+
+    if(ax_economia >= 1000) {
+        ax_economia /= 1000
+        sufixo = 'mil'
+        if(ax_economia >= 1000) {
+            ax_economia /= 1000
+            sufixo = 'milhão'
+            if(ax_economia >= 2) {
+                sufixo = 'milhões'
+            }
+        }
+    }
+
+    var ax_economia_formatado = ax_economia.toFixed(2) * 1
+
+    div_calc.innerHTML = `Se reduzíssemos 40% dos casos, sua economia pode chegar até <span style="color: green;"/> <b>R$${ax_economia_formatado} ${sufixo} mensais </b> .`
     
 }
- 
     
 </script>
 </html>
