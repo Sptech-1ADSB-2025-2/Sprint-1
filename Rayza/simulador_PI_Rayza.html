@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+    <h2>Simulador Financeiro - NeoGuard</h2>
+    Informe a quantidade de nascimentos de prematuros por dia em seu hospital:
+    <input type="text" id="ipt_nascimentos"> <br>
+    Informe a quantidade de gastos com medicação com o tratamento de hipotermia: 
+    <input type="text" id="ipt_gastos"> <br>
+
+    <button onclick="analisar()">
+        Análisar
+    </button>
+    <br><br>
+    <div id="div_msg"></div>
+</body>
+<script>
+    function analisar() {
+        var nascimentos = Number(ipt_nascimentos.value);
+        var gastos = Number(ipt_gastos.value);
+        var gastoDiario = nascimentos * gastos;
+        var gastoMensal = gastoDiario * 30;
+        var porcentagem = gastoMensal * 0.30;
+        var economiaAnual = porcentagem * 12; 
+    
+
+        div_msg.innerHTML = 'Seu Hospital tem um gasto diário de <b>R$' + gastoDiario.toFixed(2) + '</b> E um gasto mensal de <b> R$' + gastoMensal.toFixed(2) +'</b>' + '<br> Reduzindo os casos de hipotermia em 30%, com o monitoramento dos sensores, seu hospital teria uma econômia de  <b> R$' + porcentagem.toFixed(2) + '</b> por mês. E <b>R$' + economiaAnual.toFixed(2) + '</b> por ano.' ; 
+        
+    }
+</script>
+</html>
