@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora Neoguard</title>
+</head>
+
+<body>
+    <h2>Calculadora Financeira Neoguard</h2>
+
+    Insira o numero de bebes prematuros no seu hospital: <br>
+
+    <input id="ipt_prematuro"> <br><br>
+
+    Insira os dias que a criança fica hospitalizada: <br>
+
+    <input id="ipt_dias"> <br><br>
+
+    Custos por internação: <br>
+
+    <input id="ipt_custos"> <br><br>
+
+    <button onclick="Calcule()">Sua simulação</button> <br>
+
+    <div id="msg_bebe"></div>
+
+
+</body>
+<script>
+    function Calcule() {
+
+        var prematuro = Number(ipt_prematuro.value);
+
+        var dias = Number(ipt_dias.value);
+
+        var custos = Number(ipt_custos.value);
+
+        var Calcular = (prematuro * custos) / dias;
+
+        msg_bebe.innerHTML = `Com o serviço Neoguard você economizará R$${Calcular}`;
+
+        }
+
+
+
+
+</script>
+
+</html>
