@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora financeira</title>
+</head>
+<body>
+    <h2>Calculadora NeoGuard</h2> 
+
+    Digite a quantidade de bebês prematuros: <br>
+    <input id="ipt_bebe"> <br>
+    Digite a média de dias que os bebês ficam internados: <br>
+    <input id="ipt_dias"> <br>
+    Digite o valor gasto diariamente por bebê internado: <br>
+    <input id="ipt_gasto"> <br>
+    <button onclick="calcula()">Clique aqui para conferir!</button>
+    <span id="msg"></span>
+</body>
+<script>
+    function calcula(){
+        var bebe = Number(ipt_bebe.value);
+        var dias = Number(ipt_dias.value);
+        var gasto = Number(ipt_gasto.value);
+
+        var calculoReducao = (bebe * gasto) / dias;
+
+        msg.innerHTML = `será economizado: R$${calculoReducao.toFixed(0)}`
+
+    }
+</script>
+</html>
