@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simulador financeiro</title>
+</head>
+<body>
+    
+    <h1>simulador financeiro</h1>
+
+    Media de nascimentos por mes:<input id="ipt_nasc"><br>
+    Custo diario de internação na UTIN:<input id="ipt_utin"><br>
+    Media porcentual de bebes prematuros: <input id="ipt_porc"><br>
+    <button onclick="calculo()">Calcula</button><br>
+    <hr>
+    <div id="msg"></div>
+
+    <script>
+        function calculo(){
+            var mes= Number(ipt_nasc.value)
+            var utin= Number(ipt_utin.value)
+            var porc= Number(ipt_porc.value)
+            var pct= porc/100
+            var porcentual= mes*pct
+            var qnt= porcentual*utin
+            
+            msg.innerHTML= `Se levarmos em conta que cada bebe prematuro, que conforme as informações indicadas são serca de ${porcentual.toFixed(0)}, reduzira pelo menos um dia de UTIN, sua empresa economizara serca de R$ ${qnt.toFixed(2)} por mes.`
+        }
+    </script>
+
+</body>
+</html>
