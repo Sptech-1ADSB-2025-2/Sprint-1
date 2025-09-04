@@ -47,6 +47,7 @@ function economizar() {
 
     var ax_economia = ax_estimativa * ax_gasto_bb * ax_utins_dias;
 
+
     var sufixo = ''
 
     if(ax_economia >= 1000) {
@@ -61,10 +62,18 @@ function economizar() {
         }
     }
 
-    var ax_economia_formatado = ax_economia.toFixed(2) * 1
+    var ax_economia_formatado = ax_economia.toFixed(2) * 1;
 
-    div_calc.innerHTML = `Se reduzíssemos 40% dos casos, sua economia pode chegar até <span style="color: green;"/> <b>R$${ax_economia_formatado} ${sufixo} mensais </b> .`
+    var ax_semestral = ax_economia_formatado * 6;
+
+    var ax_anual = ax_economia_formatado * 12;
+
+
+    div_calc.innerHTML = `Evitando 40% dos casos, sua economia pode chegar até: <br> <span style="color: green;"/> <b>R$${ax_economia_formatado} ${sufixo} mensais </b> . 
+    <br> <span style="color: green;"/> <b>R$${ax_semestral.toFixed(1)} ${sufixo} semestral. <br> 
+      <span style="color: green;"/> <b>R$${ax_anual.toFixed(1)} ${sufixo} anual.`
     
+
 }
     
 </script>
