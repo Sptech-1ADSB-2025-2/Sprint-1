@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+        <input type="text" id="inpMedNasc"> <br>
+        <button onclick="simular()"  type="button">
+            Calcular
+        </button>
+        <div id="resultado">
+            
+        </div>
+
+
+</body>
+
+<script>
+
+    function simular() 
+    {
+        taxaPremat = 0.12
+        valorBebeDia = 1350
+        diasUti = 2
+        taxaHipot = 0.85
+        taxaMetaSalv = 0.5
+
+        prematEstimativa = Number(inpMedNasc.value) * taxaPremat
+        hipotEstimativa = prematEstimativa * taxaHipot
+        salvamentoEstimativa = hipotEstimativa * taxaPremat
+
+        economiaMes = salvamentoEstimativa * valorBebeDia * 2
+        economiaSemestre = economiaMes * 6
+        economiaAno = economiaMes * 12
+
+        valorCheioGasto = hipotEstimativa * valorBebeDia * 30
+        valorCheioEconomizado = valorCheioGasto - economiaMes
+
+        economiaPorcentagem = (valorCheioEconomizado * 100) / valorCheioGasto
+
+        resultado.innerHTML = `Voce economizaria em um senario ideal ate um total de ${economiaMes.toFixed(2)} , economia semestral ${economiaSemestre.toFixed(2)} , economia anual ${economiaAno.toFixed(2) }`
+
+    }
+
+</script>
+
+</html>
