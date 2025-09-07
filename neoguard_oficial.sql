@@ -52,6 +52,9 @@ INSERT INTO hospital (cnpj, nome, dataContratacao, telefone, email, nomeRepresen
 ('87.820.368/0001-84','Hospital de Misericordia','2025-11-06','4421-3612','hospitaldemisericordia@gmail.com','Vivian','ativo'),
 ('36.752.368/0001-90','Cruz Vermelha','2025-09-19','4446-7812','cruzvermelha@gmail.com','Frizza','inativo');
 
+INSERT INTO hospital (cnpj, nome, dataContratacao, telefone, email, nomeRepresentante, plano) VALUES
+('12.345.678/0001-90','Hospital Pesquisa e Inovação', '2025-01-01','4002-8922','HPI@gmail.com','Fernanda', 'inativo');
+
 INSERT INTO endereco (idHospital,estado, cidade, bairro, rua, cep, numero) VALUES 
 (1,'São Paulo','Jaragua','Serpa','Edna Aparecida','07714000','100'),
 (2,'São Paulo','Franco da Rocha','Jardins','Haddock Lobo','09914000','259');
@@ -70,7 +73,11 @@ INSERT INTO temperatura (idIncubadora, temperatura) VALUES
 (1,23.4),
 (2,36.7),
 (2,38.4),
-(3,35.5),
+(1,36.1),
+(2,38.4),
+(1,36.5),
+(2,38.4),
+(1,38.4),
 (4,36.0);
 
 SELECT * FROM temperatura;
@@ -83,7 +90,8 @@ SELECT temperatura AS Temperatura, CASE
 	WHEN temperatura < 32 THEN "Hipotermia grave"
 	WHEN temperatura < 35.9 THEN "Hipotermia moderada"
     WHEN temperatura < 36.4 THEN "Hipotermia leve"
-	WHEN temperatura > 37.5 THEN 'Hipetermia'
+	WHEN temperatura > 37.5 THEN 'Hipertermia'
     ELSE "Temperatura normal"
 END AS Situação,
 dataHora AS "Data e hora" FROM temperatura WHERE idIncubadora = 1;
+
